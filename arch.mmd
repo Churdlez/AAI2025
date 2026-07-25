@@ -1,0 +1,41 @@
+graph TB
+    subgraph AppOrch["1. APPLICATION & ORCHESTRATION LAYER"]
+        direction TB
+        Agents["Agent Architecture<br/>(Orchestrator Agents | Task Agents)"]
+        A2A["Agent-to-Agent (A2A) Communication & Handoffs"]
+        Tools["Tool Discovery & System Integration<br/>(Model Context Protocol / APIs / System Connectors)"]
+        Memory["Memory & Context Management<br/>(Session Context | Persistent Memory)"]
+        
+        Agents --> A2A
+        Agents --> Tools
+        Agents --> Memory
+    end
+
+    subgraph AnalyticsInsight["2. ANALYTICS & INSIGHT LAYER (Observability & Evaluation)"]
+        direction TB
+        Obs["Tracing & Observability<br/>(Execution Traces | Logs | Telemetry)"]
+        Eval["Testing & Evaluation<br/>(Quality Benchmarks | Latency | Drift Detection)"]
+        CostOps["Cost & Token Management<br/>(Token Budgeting | Resource Allocation)"]
+        Version["Versioning & Deployment<br/>(Model/Agent Versioning | Rollback)"]
+    end
+
+    subgraph Governance["CROSS-CUTTING GOVERNANCE & RUNTIME TRUST GUARDRAILS"]
+        direction LR
+        IAM["Agent Identity & Nonhuman Access Control"]
+        Policy["Runtime Policy Enforcement & Access Control"]
+        Safety["Safety Controls<br/>(Circuit Breakers | Kill Switches | Manual Escalation)"]
+        SecGuard["Security Guardrails<br/>(Prompt Injection & Data Leakage Protection)"]
+    end
+
+    subgraph DataKnowledge["3. DATA & KNOWLEDGE LAYER"]
+        direction TB
+        DataStores["Data Stores & Indexing<br/>(Vector | Graph | Relational Databases)"]
+        DataPipelines["Processing Pipelines<br/>(Structured ETL | Unstructured Preprocessing & Chunking)"]
+        GovernanceData["Data Governance & Contracts<br/>(Metadata | Lineage | Retention | Masking)"]
+    end
+
+    %% Workflow Interconnections
+    AppOrch <--> AnalyticsInsight
+    AppOrch <--> Governance
+    Governance <--> DataKnowledge
+    AppOrch <--> DataKnowledge
