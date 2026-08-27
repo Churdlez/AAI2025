@@ -14,7 +14,7 @@ print(excel_data.head())
 # ---- 3. Load data from a SQL database (Optional demo) ----
 # Example using SQLite for demonstration
 # Create a connection (replace with your DB URI)
-engine = create_engine('sqlite:///example.db')  # Assumes example.db exists
+# engine = create_engine('sqlite:///example.db')  # Assumes example.db exists
 # sql_data = pd.read_sql('SELECT * FROM your_table', engine)
 # print("\n SQL Data Loaded:")
 # print(sql_data.head())
